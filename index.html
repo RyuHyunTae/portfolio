@@ -35,7 +35,44 @@
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })
+
+      function calculateDifference() {
+      // 입력한 날짜 가져오기
+      var inputDate = new Date("2021-08-17");
+      
+      // 오늘 날짜 가져오기
+      var today = new Date();
+      
+      // 년도 차이 계산
+      var yearDiff = today.getFullYear() - inputDate.getFullYear();
+      
+      // 월 차이 계산
+      var monthDiff = today.getMonth() - inputDate.getMonth();
+      
+      // 일 차이 계산
+      var dayDiff = today.getDate() - inputDate.getDate();
+      
+      // 만약 월 차이가 음수이면 년도 차감
+      if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+          yearDiff--;
+      }
+      
+      // 만약 월 차이가 음수이면 12개월 더함
+      if (monthDiff < 0) {
+          monthDiff += 12;
+      }
+      
+      // 결과를 특정 div에 표시
+      var resultDiv = document.getElementById("present");
+      resultDiv.innerHTML = yearDiff+"년 "+ monthDiff+"개월";
+    }
+    
+    // 페이지가 완전히 로드된 후에 calculateDifference() 함수를 호출
+  window.onload = function() {
+    calculateDifference();
+  };
   </script>
+
   </head>
   <body>
     <div class="container resume">
@@ -84,7 +121,7 @@
           <h2 class="blue">INTRODUCE</h2>
         </div>
         <div class="col-12 col-md-9">
-          <p>15년에 대학교를 처음 입학하여 1학기에 방황하는 생활을 하였습니다. 그러던 도중 지도교수님께서 연구실에 관하여 말씀을 해주셨습니다. 처음에는 연구실을 들어갈지 말지에 대하여 방황을 하던 도중 주변 친구들이 연구실에 들어가는 모습을 보고 연구실에 들어가게 되었습니다. 처음 연구실을 들어갔을 때 프로그래밍에 대하여 아는 것이 하나도 없던 저에게 입대하기 전까지 C를 활용하여 자료구조에 대하여 공부를 해보는게 어떻겠냐고 연구실 선배님들이 말씀하셨습니다. 처음으로 프로그래밍을 접하여 어려움이 있었지만 책을 보며 공부를 하여 배열,연결리스트,이진트리 등 자료구조에 대하여 학습 하게 되었습니다.</p>
+          <p>15년에 대학교를 처음 입학하여 1학기에 방황하는 생활을 하였습니다. 그 때 지도교수님께서 연구실에 관하여 말씀을 해주셨습니다. 처음에는 연구실을 들어갈지 말지에 대하여 방황을 하던 도중 주변 친구들이 연구실에 들어가는 모습을 보고 연구실에 들어가게 되었습니다. 처음 연구실을 들어갔을 때 프로그래밍에 대하여 아는 것이 하나도 없던 저에게 입대하기 전까지 C를 활용하여 자료구조에 대하여 공부를 해보는게 어떻겠냐고 연구실 선배님들이 말씀하셨습니다. 처음으로 프로그래밍을 접하여 어려움이 있었지만 책을 보며 공부를 하여 배열,연결리스트,이진트리 등 자료구조에 대하여 학습 하게 되었습니다.</p>
           <P>18년 군 전역이후 Java를 학습하여 문법 및 객체지향에 대하여 공부하였고 18년 12월부터 JSP와 Servlet을 활용하여 WEB개발에 대하여 학습을 했습니다. 이 때부터 프로그래밍에 대한 흥미를 가지게 되어 적극적으로 프로그래밍에 대한 공부를 하기 시작했습니다. 이후 19년 1월부터 Spring Framework를 접하여 Spring에 관해 공부를 진행하였습니다. 대학교 생활 중 Spring을 활용해 프로젝트 진행을 통해 많이 경험 하였으며, 그 외 Java, JSP/Servlet, Spring Framework, Spring Boot, MySQL, JavaScript, Node.js, Android를 활용한 프로젝트 경험이 있습니다.</p>
           <p>21년 학교를 졸업한 이후 회사에 입사하여 React를 접하게 되었습니다. 학부생 시절 Front-end 공부를 소홀히 하였던 저에게 낮설고 어려운 부분이 많았습니다. 하지만 개인적으로 공부하고 학습하며 기초부터 차근차근 쌓아나가며 저의 부족한 점을 채워나아갔습니다. 이 과정들을 통해 모르는 것에 대하여 두려워하고 시작하지도 않은 과거의 저를 반성하며 무엇이든지 할수있다는 자신감을 가지게 되었습니다. 이후 새로운 기술, 흥미로운 주제를 가진 프로젝트를 참여하며 끊임없는 도전을 이어가고 있습니다.</p>
           <p>아직 부족한점이 많지만 습득력이 빠르다고 생각하기에 더욱 더 증진할 수 있다는 의지와 자신감이 있습니다.</p>
@@ -127,8 +164,8 @@
                       HTML/CSS
                     </li>
                     <li>
-                      <span class="badge badge-pill badge-secondary">1</span>
-                      Android
+                      <span class="badge badge-pill badge-secondary">2</span>
+                      Next.js
                     </li>
                   </ul>
                 </div>
@@ -141,6 +178,10 @@
                     <li>
                       <span class="badge badge-pill badge-secondary">2</span>
                       Typescript
+                    </li>
+                    <li>
+                      <span class="badge badge-pill badge-secondary">1</span>
+                      Android
                     </li>
                   </ul>
                 </div>
@@ -289,7 +330,7 @@
                     </div>
                     <div class="col-md-12 col-3 text-center text-md-right">
                       <span class="mr-1 badge badge-primary">재직 중</span>
-                      <span class="badge badge-info">2년 1개월</span>
+                      <span class="badge badge-info" id="present"></span>
                   </div>
                   </div>
                 </div>
@@ -365,7 +406,9 @@
                 <li>간호사 근무 맞춤형 근무/근태관리 시스템</li>
                 <li>BFF패턴을 이용한 개발</li>
                 <li>기획 분석을 통한 원활한 확장 및 유지 보수를 위한 DB 설계 수정</li>
-                <li>스케줄 자동생성을 위한 일정 관련 Full Stack 개발 <small>(신청/예약/변경 등)</small></li>
+                <li>스케줄 자동생성을 위한 일정 및 규칙 관련 Full Stack 개발 <small>(신청/예약/변경 등)</small></li>
+                <li>대용량 데이터를 효율적으로 매핑하기 위한 로직 개선 진행</li>
+                <li>고객 측에서 기존에 사용중인 제품과의 호환을 위한 인터페이스 진행</li>
                 <li><strong>Skill Keywords</strong></li>
                 <div>
                   <span class="badge badge-secondary">React</span>
@@ -375,6 +418,7 @@
                   <span class="badge badge-secondary">MyBatis</span>
                   <span class="badge badge-secondary">ElasticSearch</span>
                   <span class="badge badge-secondary">REST API</span>
+                  <span class="badge badge-secondary">Redis</span>
                 </div>
               </ul>
             </div>
@@ -395,6 +439,11 @@
                 <li>KTNET(한국무역정보통신)과 협업을 통한 PDF 시점인증(TSA: Time Stamping Authority) 개발</li>
                 <li>시점인증을 통한 문서의 위변조 방지와 진본여부를 확인할 수 있는 시점인증마크 적용</li>
                 <li>서비스 배포 및 비즈니스 로직 유지보수</li>
+                <li>
+                  <a href="https://wehagohelp.zendesk.com/hc/ko/sections/4405204746265-%EC%A0%84%EC%9E%90%EC%97%B0%EA%B5%AC%EB%85%B8%ED%8A%B8">
+                  서비스 이용가이드
+                  </a>
+                </li>
                 <li><strong>Skill Keywords</strong></li>
                 <div>
                   <span class="badge badge-secondary">React</span>
@@ -467,6 +516,11 @@
               <ul class="pt-3">
                 <li>사용자에 맞는 사용성 개선 및 서비스 유지보수</li>
                 <li>레거시 청산 및 성능개선</li>
+                <li>
+                  <a href="https://wehagohelp.zendesk.com/hc/ko/sections/900000062563-%EB%85%B8%ED%8A%B8">
+                  서비스 이용가이드
+                  </a>
+                </li>
                 <li><strong>Skill Keywords</strong></li>
                 <div>
                   <span class="badge badge-secondary">React</span>
@@ -493,6 +547,31 @@
               <h2 class="blue">PROJECTS</h2>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-3 col-12 text-md-right">
+              <h4 class="gray">2024. 03 ~ 2024. 04</h4>
+            </div>
+            <div class="col-md-9 col-12">
+              <h4>MapleStory 캐릭터 정보 검색 사이트</h4>
+              <i class="gray">개인 프로젝트</i>
+              <ul class="pt-3">
+                <li>Nexon Open API를 활용한 MapleStory 캐릭터 정보 검색 시스템 개발</li>
+                <li>ReactJS, NextJS, React-Query, Recoil 등을 사용</li>
+                <li>평소에 즐겨하던 게임의 데이터를 활용하여 사용해보고 싶었던 기술들을 이용하여 개발</li>
+                <li>Github : <a href="https://github.com/RyuHyunTae/maple-search">https://github.com/RyuHyunTae/maple-search</a></li>
+                <li>URL : <a href="https://maple-search.vercel.app/">https://maple-search.vercel.app/</a></li>
+                <li><strong>Skill Keywords</strong></li>
+                <div>
+                  <span class="badge badge-secondary">ReactJS</span>
+                  <span class="badge badge-secondary">NextJS</span>
+                  <span class="badge badge-secondary">React-Query</span>
+                  <span class="badge badge-secondary">Recoil</span>
+                  <span class="badge badge-secondary">REST API</span>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <hr/>
           <div class="row">
             <div class="col-md-3 col-12 text-md-right">
               <h4 class="gray">2020. 07 ~ 2020. 12</h4>
